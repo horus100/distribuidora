@@ -7,6 +7,8 @@ class Order(models.Model):
     code= models.CharField(max_length=10)
     date= models.DateField(auto_now_add=True)
     time= models.TimeField(auto_now_add=True)
+    def __str__(self) -> str:
+        return self.code
 
 
 class OrderPaper(models.Model):
@@ -22,6 +24,9 @@ class OrderPaper(models.Model):
         EntregaAceptada = "EntregaAceptada", "Entrega Aceptada"
         EntregaRechazada = "EntregaRechazada","Entrega Rechazada"
     type = models.CharField(max_length=20,choices=Type.choices,default=Type.Pedido)
+
+    def __str__(self) -> str:
+        return self.type
 
 class OrderDetail(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE) # Id foraneo para obtener el nombre y precio del producto
