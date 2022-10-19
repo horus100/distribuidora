@@ -1,7 +1,5 @@
-from doctest import master
-from unicodedata import name
-from django import dispatch
 from django.db import models
+from order.models import Dispatch
 from user.models import Customer, User
 # Create your models here.
 
@@ -21,5 +19,5 @@ class RoadMap(models.Model):
 class RoadCargo(models.Model):
     """ Modelo que asociara la carga de despachos de cada cliente"""
     road = models.ForeignKey(Road,on_delete=models.CASCADE)
-    dispatch = models.ForeignKey(Road,on_delete=models.CASCADE)
+    dispatch = models.ForeignKey(Dispatch,on_delete=models.CASCADE)
     devoted = models.BooleanField(default=False)
