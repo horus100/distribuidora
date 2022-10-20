@@ -6,8 +6,8 @@ from user.models import Customer, User
 class Road(models.Model):
     """ Modelo para crear una categoria ruta y asociarlo a un trabajador con 
         rol de transporte """
-    name = models.CharField(max_length=50)
-    transport = models.ForeignKey(User,on_delete=models.CASCADE,null=True)
+    name = models.CharField(max_length=50, unique=True) #Cada ruta debe tener un nombre unico
+    transport = models.OneToOneField(User,on_delete=models.CASCADE,null=True) #Un usuario solo debe estar asignado a una ruta
 
 class RoadMap(models.Model):
     """ Modelo para asociar las diferentes direcciones en un tipo de ruta en orden
