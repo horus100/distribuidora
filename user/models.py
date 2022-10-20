@@ -55,5 +55,6 @@ class Customer(models.Model):
     address = models.CharField(max_length= 255)
     reference = models.CharField(max_length= 255)
     location = models.ForeignKey(Location, on_delete=models.CASCADE)
+    category = models.ForeignKey(CustomerCategory, on_delete=models.CASCADE, null=True)
 
 
