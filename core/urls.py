@@ -9,7 +9,16 @@ import road.urls
 import units.urls
 import user.urls
 
+#JWT auth
+from rest_framework_simplejwt.views import (
+    TokenObtainPairView,
+    TokenRefreshView,
+)
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include(router.urls))
+    path('api/', include(router.urls)),
+    path('accounts/', include('rest_registration.api.urls')),
+    path('accounts/login/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('accounts/login/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 ]
